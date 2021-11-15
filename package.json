@@ -1,0 +1,21 @@
+{
+  "description": "Monorepo for firebase composables project",
+  "repository": "git@github.com:ldiebold/sanctum-composables.git",
+  "author": "Luke Diebold",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress dev docs",
+    "build": "cd ./sanctum-composables && yarn build",
+    "watch": "cd ./sanctum-composables && yarn watch"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "^2.0.0-beta.27",
+    "vuepress": "^2.0.0-beta.27"
+  },
+  "workspaces": [
+    "examples",
+    "sanctum-composables"
+  ]
+}
