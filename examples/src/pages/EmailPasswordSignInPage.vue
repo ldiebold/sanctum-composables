@@ -58,7 +58,7 @@ form.value = {
 
     <br />
 
-    <!-- Sign In -->
+    <!-- Login Button -->
     <button
       :disabled="loggingIn || fetchingUser || authState.isAuthenticated.value"
       @click="login"
@@ -81,7 +81,7 @@ form.value = {
     <div>Errors</div>
     <pre>{{ errors }}</pre>
 
-    <button v-if="!loggingOut" @click="logout">Logout</button>
+    <button :disabled="!authState.isAuthenticated.value" v-if="!loggingOut" @click="logout">Logout</button>
     <span v-else>Logging out...</span>
   </form>
 </template>

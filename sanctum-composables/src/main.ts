@@ -6,11 +6,18 @@ import makeFetchRequester from './sanctum/implementations/makeFetchRequester'
 
 // Auth
 import useEmailLogin from './sanctum/useEmailLogin'
+import useEmailRegister from './sanctum/useEmailRegister'
 import useAuthState from './sanctum/useAuthState'
 import useLogout from './sanctum/useLogout'
 import useFetchUser from './sanctum/useFetchUser'
 
 import getSanctumConfig from './sanctum/getSanctumConfig'
+
+// Utils
+import useAuthRedirector from './sanctum/utils/useAuthRedirector'
+import useAuthenticatedRedirector from './sanctum/utils/useAuthenticatedRedirector'
+import useUnauthenticatedRedirector from './sanctum/utils/useUnauthenticatedRedirector'
+import handlesErrors from './sanctum/handlesErrors'
 
 export {
   sanctumPlugin,
@@ -18,7 +25,6 @@ export {
   getSanctumConfig,
   useFetchUser,
   // getFirestore,
-  // useAuthRedirector,
   // useFirebaseAuthProvider,
   // useFirebaseFacebookAuth,
   // useFirebaseGithubAuth,
@@ -26,11 +32,12 @@ export {
   // useFirebaseTwitterAuth,
   useAuthState,
   useLogout,
-  // useEmailRegister,
+  useEmailRegister,
   useEmailLogin,
   // useApp,
-  // useAuthenticatedRedirector,
-  // useUnauthenticatedRedirector,
-  // handlesErrors,
+  useAuthRedirector,
+  useAuthenticatedRedirector,
+  useUnauthenticatedRedirector,
+  handlesErrors,
   // useFirestore
 }
