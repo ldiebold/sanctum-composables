@@ -1,6 +1,6 @@
 {
   "name": "sanctum-composables",
-  "version": "1.0.0-alpha.18",
+  "version": "1.0.0-alpha.19",
   "description": "A collection of composables for dealing with Laravel Sanctum",
   "main": "dist/sanctum-composables.esm.js",
   "module": "dist/sanctum-composables.esm.js",
@@ -33,6 +33,7 @@
   "dependencies": {
     "@vueuse/core": "^6.8.0",
     "@vueuse/integrations": "^6.8.0",
+    "auth-composables": "^1.0.0-alpha.17",
     "axios": "^0.24.0",
     "tslib": "^2.3.1",
     "typescript": "^4.4.4",
