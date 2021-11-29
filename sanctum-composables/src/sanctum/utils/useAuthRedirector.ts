@@ -3,15 +3,15 @@ import { ref, unref, watch, WatchStopHandle, watchEffect } from 'vue-demi'
 import { RouteLocationRaw, useRouter, Router } from 'vue-router'
 import { MaybeRef } from '@vueuse/core'
 import useFetchUser from '../useFetchUser'
+import { RedirectTriggers, UseAuthRedirector } from 'auth-composables'
 
 type UserOnCheckedFunction = (user: unknown | null) => void
-type RedirectTriggers = 'authenticated' | 'unauthenticated' | 'error'
 
-export default function useAuthRedirector(
+export const useAuthRedirector: UseAuthRedirector = (
   redirectOn: RedirectTriggers,
-  redirectTo: MaybeRef<RouteLocationRaw>,
+  redirectTo: MaybeRef<RouteLocationRaw> = ref(''),
   router: Router = useRouter()
-) {
+) => {
   const checking = ref(false)
   const { loading: fetchingUser, fetch: fetchUser } = useFetchUser()
 
@@ -54,11 +54,13 @@ export default function useAuthRedirector(
         }
 
         if (!isAuthenticated.value && redirectOn === 'unauthenticated') {
-          router.push(unref(redirectTo))
+          if(location) {
+            router.push(unref(redirectTo ?? ''))
+          }
         }
 
         if (isAuthenticated.value && redirectOn === 'authenticated') {
-          router.push(unref(redirectTo))
+          router.push(unref(redirectTo ?? ''))
         }
 
         checking.value = false
@@ -75,10 +77,10 @@ export default function useAuthRedirector(
 
   function triggerRedirect() {
     if (isAuthenticated.value && redirectOn === 'authenticated') {
-      router.push(unref(redirectTo))
+      router.push(unref(redirectTo ?? ''))
     }
     if (!isAuthenticated.value && redirectOn === 'unauthenticated') {
-      router.push(unref(redirectTo))
+      router.push(unref(redirectTo ?? ''))
     }
   }
 
@@ -91,3 +93,5 @@ export default function useAuthRedirector(
     onChecked
   }
 }
+
+export default useAuthRedirector

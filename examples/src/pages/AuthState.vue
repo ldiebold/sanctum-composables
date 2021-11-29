@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthState } from 'sanctum-composables'
+import { useAuthState } from 'auth-composables'
 
 const authState = useAuthState()
 </script>

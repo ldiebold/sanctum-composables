@@ -1,9 +1,10 @@
 import getSanctumConfig from './getSanctumConfig'
 import { ref } from 'vue-demi'
 import useAuthState from './useAuthState'
-import handlesErrors from './handlesErrors'
+import useHandlesErrors from './useHandlesErrors'
+import { UseIdentityPasswordRegister } from 'auth-composables'
 
-export default function () {
+export const useIdentityPasswordRegister: UseIdentityPasswordRegister = () => {
   const loading = ref(false)
   const { requester } = getSanctumConfig()
   const { register: registerRequest, getUser } = requester
@@ -18,7 +19,7 @@ export default function () {
     resetValidationErrors,
     reset,
     fromResponse: setErrorsFromResponse
-  } = handlesErrors()
+  } = useHandlesErrors()
 
   const form = ref({
     name: '',
@@ -62,3 +63,5 @@ export default function () {
     reset
   }
 }
+
+export default useIdentityPasswordRegister

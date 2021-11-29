@@ -4,7 +4,7 @@ import PluginOptions from './types/PluginOptions'
 import { SanctumAppKey } from './types/symbols'
 import useVueUseAuthState from './implementations/useVueUseAuthState'
 
-export default {
+export const sanctumPlugin = {
   install: (vueApp: App, options: PluginOptions = {}) => {
     if (!options.useAuthState) {
       options.useAuthState = useVueUseAuthState
@@ -15,3 +15,5 @@ export default {
     vueApp.provide(SanctumAppKey, options)
   }
 }
+
+export default sanctumPlugin

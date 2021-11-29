@@ -1,10 +1,11 @@
 import { createGlobalState } from '@vueuse/shared'
 import { ref } from 'vue-demi'
 import getSanctumConfig from './getSanctumConfig'
-import handlesErrors from './handlesErrors'
+import useHandlesErrors from './useHandlesErrors'
 import useAuthState from './useAuthState'
+import { UseFetchUser } from 'auth-composables'
 
-export default function () {
+export const useFetchUser: UseFetchUser = () => {
   const { requester } = getSanctumConfig()
   const { getUser } = requester
 
@@ -21,7 +22,7 @@ export default function () {
     resetStandardErrors,
     reset,
     fromResponse: setErrorsFromResponse
-  } = handlesErrors()
+  } = useHandlesErrors()
 
   const fetch = async () => {
     loading.value = true
@@ -49,3 +50,5 @@ export default function () {
     reset
   }
 }
+
+export default useFetchUser

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useSignOut, useAuthState } from 'sanctum-composables'
+import { useIdentityPasswordLogout, useAuthState } from 'auth-composables'
 
-const { signOut, loading } = useSignOut()
+const { signOut, loading } = useIdentityPasswordLogout()
 const { isAuthenticated } = useAuthState()
 </script>
 

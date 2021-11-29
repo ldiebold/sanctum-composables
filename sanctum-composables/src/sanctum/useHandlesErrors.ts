@@ -1,9 +1,9 @@
 import { ref, computed } from 'vue-demi'
-import ValidationErrors from './types/ValidationErrors'
 import ResponseErrors from './types/ResponseErrors'
 import { SanctumResponse } from './types/Requester'
+import { UseHandlesErrors, ValidationErrors } from 'auth-composables'
 
-export default () => {
+export const useHandlesErrors: UseHandlesErrors = () => {
   const errors = ref<ResponseErrors>([])
   const hasErrors = computed(() => !!errors.value.length)
   function resetStandardErrors() {
@@ -46,3 +46,5 @@ export default () => {
     fromResponse
   }
 }
+
+export default useHandlesErrors

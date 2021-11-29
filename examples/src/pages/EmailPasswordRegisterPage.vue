@@ -1,11 +1,12 @@
 <script setup lang="ts">
 // Import composables
 import {
-  useEmailRegister,
+  useIdentityPasswordRegister,
   useAuthState,
-  useLogout,
-  useFetchUser
-} from 'sanctum-composables'
+  useIdentityPasswordLogout
+} from 'auth-composables'
+
+import { useFetchUser } from 'sanctum-composables'
 
 // Email
 const {
@@ -14,13 +15,13 @@ const {
   loading: loggingIn,
   validationErrors,
   errors
-} = useEmailRegister()
+} = useIdentityPasswordRegister()
 
 // Logout
 const {
   logout,
   loading: loggingOut
-} = useLogout()
+} = useIdentityPasswordLogout()
 
 // Fetch user
 const {

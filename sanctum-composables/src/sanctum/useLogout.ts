@@ -1,9 +1,10 @@
 import { ref } from 'vue-demi'
 import getSanctumConfig from './getSanctumConfig'
-import handlesErrors from './handlesErrors'
+import useHandlesErrors from './useHandlesErrors'
 import useAuthState from './useAuthState'
+import { UseIdentityPasswordLogout } from 'auth-composables'
 
-export default function () {
+export const useIdentityPasswordLogout: UseIdentityPasswordLogout = () => {
   const loading = ref(false)
   const { requester } = getSanctumConfig()
   const { logout: logoutRequest } = requester
@@ -15,7 +16,7 @@ export default function () {
     resetStandardErrors,
     reset,
     fromResponse: setErrorsFromResponse
-  } = handlesErrors()
+  } = useHandlesErrors()
 
   const logout = async () => {
     loading.value = true
@@ -41,3 +42,5 @@ export default function () {
     reset
   }
 }
+
+export default useIdentityPasswordLogout

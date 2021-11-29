@@ -5,10 +5,12 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "dev": "cd ./examples && yarn dev",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
     "build": "cd ./sanctum-composables && yarn build",
-    "watch": "cd ./sanctum-composables && yarn watch"
+    "watch": "cd ./sanctum-composables && yarn watch",
+    "lint": "lint ./sanctum-composables/src"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-beta.27",
